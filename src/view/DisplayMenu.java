@@ -13,5 +13,4 @@ public class DisplayMenu {
         System.out.println("7.Read file");
         System.out.println("8.Exit");
     }
-
 }

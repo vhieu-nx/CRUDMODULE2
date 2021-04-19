@@ -30,7 +30,7 @@ public class ReaderWriterCSV {
             bufferedWriter.flush();
             bufferedWriter.close();
             fileWriter.close();
-            System.out.println("Lưu thành công");
+            System.out.println("WriteFile successfully");
         } catch (IOException e) {
             e.printStackTrace();
         }

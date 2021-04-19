@@ -54,6 +54,7 @@ public class ContactManager {
             System.out.println(result);
             Contact contact = new Contact(fullName, phoneNumber, group, gender, address, mail, dateOfBirth);
             arrayList.add(contact);
+
         } else {
             System.out.println(result);
             this.addContact(arrayList);
@@ -69,7 +70,7 @@ public class ContactManager {
         } else if (!CheckInfo.checkPhone(String.valueOf(phoneNumber))) {
             result = "Your input wrong phone format";
         } else if (!CheckInfo.checkMail(mail)) {
-            result = "Your input wroong mail format";
+            result = "Your input wrong mail format";
         } else {
             result = "Save Successfully";
         }
@@ -81,19 +82,19 @@ public class ContactManager {
         if (this.checkPhone(phone, arrayList) != -1) {
             System.out.println("Found phone number, Please enter your information");
             int index = this.checkPhone(phone, arrayList);
-            System.out.println("Full name: ");
+            System.out.println("Full name new: ");
             String fullName = sc.nextLine();
             System.out.println("Phone Number: ");
             int phoneNumber = Integer.parseInt(sc.nextLine());
-            System.out.println("Group: ");
+            System.out.println("Group New: ");
             String group = sc.nextLine();
-            System.out.println("Gender: ");
+            System.out.println("Gender New: ");
             String gender = sc.nextLine();
-            System.out.println("Address: ");
+            System.out.println("Address New: ");
             String address = sc.nextLine();
-            System.out.println("mail: ");
+            System.out.println("Mail New: ");
             String mail = sc.nextLine();
-            System.out.println("Year Of Birth: ");
+            System.out.println("Year Of Birth New: ");
             String dateOfBirth = sc.nextLine();
             String result = this.checkInformation(fullName, phoneNumber, group, gender, address, mail, dateOfBirth);
             if (result.equals("Save Successfully")) {
@@ -158,19 +159,19 @@ public class ContactManager {
         System.out.println("2.Search by name");
         int choice = Integer.parseInt(sc.nextLine());
         if (choice == 1) {
-            System.out.println("Please enter your phone number");
+            System.out.println("Please enter your  phone number want to search");
             int phoneSearch = Integer.parseInt(sc.nextLine());
             if (checkPhone(phoneSearch, arrayList) != -1) {
                 int indexPhone = checkPhone(phoneSearch, arrayList);
                 displayContact(indexPhone, arrayList);
-            } else System.out.println("Done find");
+            } else System.out.println("Done find data");
         } else if (choice == 2) {
-            System.out.println("Please enter your name");
+            System.out.println("Please enter your name you want to search");
             String nameSearch = sc.nextLine();
             if (checkName(nameSearch, arrayList) != -1) {
                 int indexName = checkName(nameSearch, arrayList);
                 displayContact(indexName, arrayList);
-            } else System.out.println("Dont find");
+            } else System.out.println("Dont find data");
         }
     }
 
