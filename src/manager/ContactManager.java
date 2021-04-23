@@ -17,6 +17,8 @@ public class ContactManager {
             System.out.println("Gender: " + arrayList.get(i).getGender());
             System.out.println("Group: " + arrayList.get(i).getGroup());
             System.out.println("Address: " + arrayList.get(i).getAddress());
+            System.out.println("Email" + arrayList.get(i).getMail());
+            System.out.println("DateOfBirth" + arrayList.get(i).getDateOfBirth());
             System.out.println("--------------------------------------");
         }
         DisplayMenu.displayMenu();
@@ -28,6 +30,7 @@ public class ContactManager {
         String fullName = sc.nextLine();
         System.out.println("Phone Number(9 number): ");
         String number = "";
+
         int phoneNumber = 0;
         do{
             System.out.println("Enter your phone");
@@ -165,7 +168,7 @@ public class ContactManager {
                 int indexPhone = checkPhone(phoneSearch, arrayList);
                 displayContact(indexPhone, arrayList);
             } else System.out.println("Done find data");
-        } else if (choice == 2) {
+        }else if (choice == 2) {
             System.out.println("Please enter your name you want to search");
             String nameSearch = sc.nextLine();
             if (checkName(nameSearch, arrayList) != -1) {
