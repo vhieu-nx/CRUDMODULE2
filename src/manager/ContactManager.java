@@ -17,8 +17,8 @@ public class ContactManager {
             System.out.println("Gender: " + arrayList.get(i).getGender());
             System.out.println("Group: " + arrayList.get(i).getGroup());
             System.out.println("Address: " + arrayList.get(i).getAddress());
-            System.out.println("Email" + arrayList.get(i).getMail());
-            System.out.println("DateOfBirth" + arrayList.get(i).getDateOfBirth());
+            System.out.println("Email: " + arrayList.get(i).getMail());
+            System.out.println("DateOfBirth: " + arrayList.get(i).getDateOfBirth());
             System.out.println("--------------------------------------");
         }
         DisplayMenu.displayMenu();

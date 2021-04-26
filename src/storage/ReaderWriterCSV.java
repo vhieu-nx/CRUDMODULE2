@@ -12,28 +12,28 @@ public class ReaderWriterCSV {
     File file = new File(FILEPATH);
     public void writeFile(ArrayList<Contact> arrayList){
         try {
-            FileOutputStream fileOutputStream = new FileOutputStream(FILEPATH);
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-            objectOutputStream.writeObject(arrayList);
-            objectOutputStream.close();
-//            FileWriter fileWriter = new FileWriter(file);
-//            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-//            for (int i = 0; i < arrayList.size(); i++) {
-//                String name = arrayList.get(i).getFullName();
-//                int phone = arrayList.get(i).getPhoneNumber();
-//                String group = arrayList.get(i).getGroup();
-//                String gender = arrayList.get(i).getGender();
-//                String address = arrayList.get(i).getAddress();
-//                String mail = arrayList.get(i).getMail();
-//                String dateOfBirth = arrayList.get(i).getDateOfBirth();
-//                String line = name + COMMA_DELIMITER + phone + COMMA_DELIMITER + group + COMMA_DELIMITER
-//                        + gender + COMMA_DELIMITER + address + COMMA_DELIMITER + mail + COMMA_DELIMITER
-//                        + dateOfBirth + NEW_LINE_SEPARATOR;
-//                bufferedWriter.write(line);
-//            }
+//            FileOutputStream fileOutputStream = new FileOutputStream(FILEPATH,true);
+//            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+//            objectOutputStream.writeObject(arrayList);
+//            objectOutputStream.close();
+            FileWriter fileWriter = new FileWriter(file,true);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            for (int i = 0; i < arrayList.size(); i++) {
+                String name = arrayList.get(i).getFullName();
+                int phone = arrayList.get(i).getPhoneNumber();
+                String group = arrayList.get(i).getGroup();
+                String gender = arrayList.get(i).getGender();
+                String address = arrayList.get(i).getAddress();
+                String mail = arrayList.get(i).getMail();
+                String dateOfBirth = arrayList.get(i).getDateOfBirth();
+                String line = name + COMMA_DELIMITER + phone + COMMA_DELIMITER + group + COMMA_DELIMITER
+                        + gender + COMMA_DELIMITER + address + COMMA_DELIMITER + mail + COMMA_DELIMITER
+                        + dateOfBirth + NEW_LINE_SEPARATOR;
+                bufferedWriter.write(line);
+            }
 //            bufferedWriter.flush();
-//            bufferedWriter.close();
-//            fileWriter.close();
+            bufferedWriter.close();
+            fileWriter.close();
             System.out.println("WriteFile successfully");
         } catch (IOException e) {
             e.printStackTrace();
@@ -41,37 +41,38 @@ public class ReaderWriterCSV {
     }
 
     public ArrayList<Contact> readFile() {
-
-        try {
-
-            FileInputStream fileIn = new FileInputStream(FILEPATH);
-            ObjectInputStream objectIn = new ObjectInputStream(fileIn);
-
-            ArrayList<Contact> obj = (ArrayList<Contact>) objectIn.readObject();
-
-            System.out.println("The Object has been read from the file");
-            objectIn.close();
-            return obj;
-
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            return null;
-        }
 //        ArrayList<Contact> contacts = new ArrayList<>();
+//
 //        try {
-//            FileReader fileReader = new FileReader(FILEPATH);
-//            BufferedReader bufferedReader = new BufferedReader(fileReader);
-//            String line = null;
-//            while ((line = bufferedReader.readLine()) != null) {
-//                Contact contact = splitString(line);
-//                contacts.add(contact);
-//            }
-//            bufferedReader.close();
-//            fileReader.close();
-//        } catch (IOException e) {
-//            e.printStackTrace();
+//
+//            FileInputStream fileIn = new FileInputStream(FILEPATH);
+//            ObjectInputStream objectIn = new ObjectInputStream(fileIn);
+//
+//            ArrayList<Contact> obj = (ArrayList<Contact>) objectIn.readObject();
+//
+//            System.out.println("The Object has been read from the file");
+//            objectIn.close();
+//            return obj;
+//
+//        } catch (Exception ex) {
+//            ex.printStackTrace();
+//            return contacts;
 //        }
-//        return contacts;
+        ArrayList<Contact> contacts = new ArrayList<>();
+        try {
+            FileReader fileReader = new FileReader(FILEPATH);
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            String line = null;
+            while ((line = bufferedReader.readLine()) != null) {
+                Contact contact = splitString(line);
+                contacts.add(contact);
+            }
+            bufferedReader.close();
+            fileReader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return contacts;
     }
     public static Contact splitString(String string) {
         String[] splitData = string.split(COMMA_DELIMITER);
